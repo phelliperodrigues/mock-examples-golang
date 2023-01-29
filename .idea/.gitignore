@@ -8,3 +8,6 @@
 /dataSources.local.xml
 
 .idea/*
+/mocks-in-go.iml
+/modules.xml
+/vcs.xml
