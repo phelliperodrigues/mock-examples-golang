@@ -1,3 +1,5 @@
+//go:generate go run github.com/vektra/mockery/v2 --name=DB --with-expecter --filename	db.go
+
 package mockery_test
 
 import (
@@ -13,19 +15,6 @@ type DB interface {
 
 func TestMock(t *testing.T) {
 	// Gerando o mock
-	generator, err := mockery.NewGenerator()
-	if err != nil {
-		t.Fatalf("Não foi possível criar o gerador de mock: %s", err)
-	}
-	err = generator.Start("./mocks")
-	if err != nil {
-		t.Fatalf("Não foi possível iniciar o gerador de mock: %s", err)
-	}
-	err = generator.Generate("DB")
-	if err != nil {
-		t.Fatalf("Não foi possível gerar o mock: %s", err)
-	}
-
 	mockDB := new(mocks.DB)
 	mockDB.On("Query", "SELECT * FROM users").Return([]byte("fake data"), nil)
 
